@@ -1,40 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
 import {
-  Button, TextInput, View, Text,
+  Button, TextInput, View, Text, ImageBackground,
 } from 'react-native';
 import { Formik } from 'formik';
 import styles from '../css/styles';
+import signin from '../actions/index';
+import bgImage from '../../assets/background.jpg';
 
 const SigninForm = () => (
-  <View style={styles.container}>
+  <ImageBackground source={bgImage} style={styles.container}>
     <Formik
       initialValues={{ username: '', password: '' }}
       onSubmit={values => {
-        
+        console.log(values);
       }}
     >
       { props => (
         <View>
           <Text style={styles.logo}>Track.it</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            onChangeText={props.handleChange('username')}
-            value={props.values.username}
-          />
-          <TextInput
-            style={styles.input}
-            secureTextEntry
-            placeholder="Password"
-            onChangeText={props.handleChange('password')}
-            value={props.values.password}
-          />
+          <View>
+            <Icon
+              name="ios-person"
+              size={28}
+              color="rgba(255, 255, 255, 0.7)"
+              style={styles.icon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Username"
+              onChangeText={props.handleChange('username')}
+              value={props.values.username}
+            />
+          </View>
+          <View>
+            <Icon
+              name="ios-lock"
+              size={28}
+              color="rgba(255, 255, 255, 0.7)"
+              style={styles.icon}
+            />
+            <TextInput
+              style={styles.input}
+              secureTextEntry
+              placeholder="Password"
+              onChangeText={props.handleChange('password')}
+              value={props.values.password}
+            />
+          </View>
           <Button title="Sign In" onPress={props.handleSubmit} />
         </View>
       )}
     </Formik>
-  </View>
+  </ImageBackground>
 );
 
 SigninForm.propTypes = {
@@ -49,4 +69,12 @@ SigninForm.defaultProps = {
   values: { username: '', password: '' },
 };
 
-export default SigninForm;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = dispatch => ({
+  signin: userAuth => dispatch(signin(userAuth)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
