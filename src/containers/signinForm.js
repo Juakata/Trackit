@@ -15,7 +15,15 @@ const SigninForm = () => (
     <Formik
       initialValues={{ username: '', password: '' }}
       onSubmit={values => {
-        console.log(values);
+        const { username, password } = values;
+        fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
       }}
     >
       { props => (
