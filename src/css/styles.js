@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window');
+const { height: HEIGHT } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -55,6 +56,51 @@ const styles = StyleSheet.create({
     color: '#bf0000',
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: '#ededed',
+  },
+  homeContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 2,
+  },
+  box: {
+    margin: 2,
+    width: WIDTH / 2 - 6,
+    height: HEIGHT / 4 - 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+  },
+  lastBox: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 2,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ffffff',
+    height: HEIGHT / 4 - 25,
+  },
+  userIcon: {
+    color: 'rgba(58, 121, 153, 0.7)',
+  },
+  subBox: {
+    margin: 0,
+    width: '50%',
+    borderColor: '#000',
+    borderWidth: 0.5,
+    height: HEIGHT / 4 - 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#003d5c',
+  },
+  lastIcon: {
+    color: 'rgba(255, 255, 255, 0.7)',
   },
 });
 
