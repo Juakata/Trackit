@@ -7,99 +7,107 @@ import {
 } from 'react-native';
 import { Formik } from 'formik';
 import styles from '../css/styles';
-import signin from '../actions/index';
+import { signin } from '../actions/index';
 import bgImage from '../../assets/background.jpg';
 
-const SigninForm = () => (
-  <ImageBackground source={bgImage} style={styles.container}>
-    <Formik
-      initialValues={{ username: '', password: '' }}
-      onSubmit={values => {
-        const { username, password } = values;
-        const errorElement = document.getElementById('error');
-        fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
-          .then(response => response.json())
-          .then(data => {
-            if (typeof data.result === 'undefined') {
-              errorElement.innerHTML = 'User';
-            } else {
-              switch (data.result) {
-                case 'not_found':
-                  errorElement.innerHTML = 'Incorrect User';
-                  break;
-                case 'wrong_password':
-                  errorElement.innerHTML = 'Incorrect Password';
-                  break;
-                default:
-              }
-            }
-          })
-          .catch(() => {
-            document.getElementById('error').innerHTML = 'Wrong Data';
-          });
-      }}
-    >
-      { props => (
-        <View>
-          <Text style={styles.logo}>Track.it</Text>
-          <View>
-            <Icon
-              name="ios-person"
-              size={28}
-              color="rgba(255, 255, 255, 0.7)"
-              style={styles.icon}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Username"
-              onChangeText={props.handleChange('username')}
-              value={props.values.username}
-            />
-          </View>
-          <View>
-            <Icon
-              name="ios-lock"
-              size={28}
-              color="rgba(255, 255, 255, 0.7)"
-              style={styles.icon}
-            />
-            <TextInput
-              style={styles.input}
-              secureTextEntry
-              placeholder="Password"
-              onChangeText={props.handleChange('password')}
-              value={props.values.password}
-            />
-          </View>
-          <View style={styles.buttonContainer}>
-            <Text id="error" style={styles.error} />
-            <TouchableOpacity style={styles.btnSession} onPress={props.handleSubmit}>
-              <Text style={styles.text}>Sign In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnSession}>
-              <Text style={styles.text}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
-    </Formik>
-  </ImageBackground>
-);
+class SigninForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: '',
+    };
+  }
+
+  render() {
+    const { error } = this.state;
+    const { navigation } = this.props;
+    return (
+      <ImageBackground source={bgImage} style={styles.container}>
+        <Formik
+          initialValues={{ username: '', password: '', errors: '' }}
+          onSubmit={values => {
+            const { username, password } = values;
+            fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
+              .then(response => response.json())
+              .then(data => {
+                if (typeof data.result === 'undefined') {
+                  this.setState({ error: 'user' });
+                } else {
+                  switch (data.result) {
+                    case 'not_found':
+                      this.setState({ error: 'Incorrect User' });
+                      break;
+                    case 'wrong_password':
+                      this.setState({ error: 'Incorrect Password' });
+                      break;
+                    default:
+                  }
+                }
+              })
+              .catch(() => {
+                this.setState({ error: 'Wrong Data' });
+              });
+          }}
+        >
+          { props => (
+            <View>
+              <Text style={styles.logo}>Track.it</Text>
+              <View>
+                <Icon
+                  name="ios-person"
+                  size={28}
+                  color="rgba(255, 255, 255, 0.7)"
+                  style={styles.icon}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Username"
+                  onChangeText={props.handleChange('username')}
+                  value={props.values.username}
+                />
+              </View>
+              <View>
+                <Icon
+                  name="ios-lock"
+                  size={28}
+                  color="rgba(255, 255, 255, 0.7)"
+                  style={styles.icon}
+                />
+                <TextInput
+                  style={styles.input}
+                  secureTextEntry
+                  placeholder="Password"
+                  onChangeText={props.handleChange('password')}
+                  value={props.values.password}
+                />
+              </View>
+              <View style={styles.buttonContainer}>
+                <Text style={styles.error}>{error}</Text>
+                <TouchableOpacity style={styles.btnSession} onPress={props.handleSubmit}>
+                  <Text style={styles.text}>Sign In</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.btnSession}
+                  onPress={() => navigation.navigate('Signup', { name: 'Signup' })}
+                >
+                  <Text style={styles.text}>Sign Up</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        </Formik>
+      </ImageBackground>
+    );
+  }
+}
 
 SigninForm.propTypes = {
-  handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  values: PropTypes.instanceOf(Object),
-};
-
-SigninForm.defaultProps = {
-  handleChange: null,
-  handleSubmit: null,
-  values: { username: '', password: '' },
+  navigation: PropTypes.instanceOf(Object).isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch => ({
