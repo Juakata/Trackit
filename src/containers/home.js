@@ -1,33 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  TextInput, View, Text, TouchableOpacity,
+  View, Text,
 } from 'react-native';
-import styles from '../css/styles';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'Andoni',
+      progress: 0,
     };
   }
 
   render() {
     const { auth } = this.props;
+    const { progress } = this.state;
     return (
       <View>
         <Text>
           { auth }
+        </Text>
+        <Text>
+          { progress }
         </Text>
       </View>
     );
   }
 }
 
-Home.propsTypes = {
+Home.propTypes = {
   auth: PropTypes.string.isRequired,
 };
 
