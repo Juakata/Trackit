@@ -1,19 +1,43 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './src/reducers/index';
+import SigninForm from './src/containers/signinForm';
+import SignupForm from './src/containers/signupForm';
+import Home from './src/containers/home';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const user = {
+  auth: '',
+};
+
+const store = createStore(rootReducer, user);
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Signin"
+            component={SigninForm}
+            options={{ title: 'Sign In!' }}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={SignupForm}
+            options={{ title: 'Sign Up!' }}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: 'Home' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
