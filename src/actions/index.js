@@ -1,14 +1,14 @@
 const SIGNIN = 'SIGNIN';
 const SIGNUP = 'SIGNUP';
 
-const signin = userAuth => ({
+const signin = username => ({
   type: SIGNIN,
-  userAuth,
+  username,
 });
 
-const signup = userInfo => ({
+const signup = username => ({
   type: SIGNUP,
-  userInfo,
+  username,
 });
 
 export { signin, signup };

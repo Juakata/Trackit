@@ -7,9 +7,10 @@ import { Provider } from 'react-redux';
 import rootReducer from './src/reducers/index';
 import SigninForm from './src/containers/signinForm';
 import SignupForm from './src/containers/signupForm';
+import Home from './src/containers/home';
 
 const user = {
-  auth: [],
+  auth: '',
 };
 
 const store = createStore(rootReducer, user);
@@ -28,7 +29,12 @@ export default function App() {
           <Stack.Screen
             name="Signup"
             component={SignupForm}
-            options={{ title: 'Sign In!' }}
+            options={{ title: 'Sign Up!' }}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: 'Home' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

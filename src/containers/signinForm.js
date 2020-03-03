@@ -20,18 +20,20 @@ class SigninForm extends React.Component {
 
   render() {
     const { error } = this.state;
-    const { navigation } = this.props;
+    const { navigation, signin } = this.props;
     return (
       <ImageBackground source={bgImage} style={styles.container}>
         <Formik
-          initialValues={{ username: '', password: '', errors: '' }}
-          onSubmit={values => {
+          initialValues={{ username: '', password: '' }}
+          onSubmit={(values, actions) => {
             const { username, password } = values;
             fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
               .then(response => response.json())
               .then(data => {
                 if (typeof data.result === 'undefined') {
-                  this.setState({ error: 'user' });
+                  actions.resetForm();
+                  signin(username);
+                  navigation.navigate('Home', { name: 'Home' });
                 } else {
                   switch (data.result) {
                     case 'not_found':
@@ -90,7 +92,7 @@ class SigninForm extends React.Component {
                   style={styles.btnSession}
                   onPress={() => navigation.navigate('Signup', { name: 'Signup' })}
                 >
-                  <Text style={styles.text}>Sign Up</Text>
+                  <Text style={styles.text}>Create a new account!</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -103,11 +105,11 @@ class SigninForm extends React.Component {
 
 SigninForm.propTypes = {
   navigation: PropTypes.instanceOf(Object).isRequired,
+  signin: PropTypes.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch => ({

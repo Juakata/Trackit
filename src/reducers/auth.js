@@ -1,12 +1,12 @@
 const SIGNIN = 'SIGNIN';
 const SIGNUP = 'SIGNUP';
 
-const authReducer = (state = [], action) => {
+const authReducer = (state = '', action) => {
   switch (action.type) {
     case SIGNIN:
-      return action.userAuth;
+      return action.username;
     case SIGNUP:
-      return action.userInfo;
+      return action.username;
     default:
       return state;
   }
