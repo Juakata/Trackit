@@ -1,5 +1,5 @@
 const SIGNIN = 'SIGNIN';
-const SIGNUP = 'SIGNIN';
+const SIGNUP = 'SIGNUP';
 
 const signin = userAuth => ({
   type: SIGNIN,

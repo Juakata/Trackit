@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  Button, TextInput, View, Text, ImageBackground,
+  TextInput, View, Text, ImageBackground, TouchableOpacity,
 } from 'react-native';
 import { Formik } from 'formik';
 import styles from '../css/styles';
@@ -16,13 +16,26 @@ const SigninForm = () => (
       initialValues={{ username: '', password: '' }}
       onSubmit={values => {
         const { username, password } = values;
+        const errorElement = document.getElementById('error');
         fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            if (typeof data.result === 'undefined') {
+              errorElement.innerHTML = 'User';
+            } else {
+              switch (data.result) {
+                case 'not_found':
+                  errorElement.innerHTML = 'Incorrect User';
+                  break;
+                case 'wrong_password':
+                  errorElement.innerHTML = 'Incorrect Password';
+                  break;
+                default:
+              }
+            }
           })
-          .catch(error => {
-            console.log(error);
+          .catch(() => {
+            document.getElementById('error').innerHTML = 'Wrong Data';
           });
       }}
     >
@@ -58,7 +71,15 @@ const SigninForm = () => (
               value={props.values.password}
             />
           </View>
-          <Button title="Sign In" onPress={props.handleSubmit} />
+          <View style={styles.buttonContainer}>
+            <Text id="error" style={styles.error} />
+            <TouchableOpacity style={styles.btnSession} onPress={props.handleSubmit}>
+              <Text style={styles.text}>Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btnSession}>
+              <Text style={styles.text}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
     </Formik>

@@ -10,15 +10,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#e6fffe',
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
+  },
+  buttonContainer: {
+    alignItems: 'center',
   },
   text: {
-    color: '#28fc03',
+    color: '#ffffff',
+    fontSize: 16,
+    textAlign: 'center',
   },
   logo: {
     color: '#fff',
     backgroundColor: '#000',
-    textAlign: 'center',
     borderRadius: 100,
     padding: 40,
     fontSize: 20,
@@ -39,6 +42,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
     color: 'rgba(255, 255, 255, 0.7)',
     margin: 10,
+  },
+  btnSession: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#432577',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  error: {
+    color: '#bf0000',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 
