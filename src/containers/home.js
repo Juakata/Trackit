@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  View, ScrollView, Text,
+  View, ScrollView, Text, TouchableOpacity,
 } from 'react-native';
 import styles from '../css/styles';
+import { setCategory } from '../actions/index';
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,6 +14,13 @@ class Home extends React.Component {
     this.state = {
       progress: 0,
     };
+    this.handleCategory = this.handleCategory.bind(this);
+  }
+
+  handleCategory(category) {
+    const { navigation, setCategory } = this.props;
+    setCategory(category);
+    navigation.navigate('Category', { name: 'Category' });
   }
 
   render() {
@@ -39,7 +47,7 @@ class Home extends React.Component {
             />
             <Text>{ progress }</Text>
           </View>
-          <View style={styles.box}>
+          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Networking')}>
             <Icon
               name="ios-people"
               size={90}
@@ -47,8 +55,8 @@ class Home extends React.Component {
               style={styles.userIcon}
             />
             <Text>Networking</Text>
-          </View>
-          <View style={styles.box}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Looking for job')}>
             <Icon
               name="ios-search"
               size={90}
@@ -56,8 +64,8 @@ class Home extends React.Component {
               style={styles.userIcon}
             />
             <Text>Looking for job</Text>
-          </View>
-          <View style={styles.box}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Conding Challenges')}>
             <Icon
               name="ios-desktop"
               size={90}
@@ -65,8 +73,8 @@ class Home extends React.Component {
               style={styles.userIcon}
             />
             <Text>Coding Challenges</Text>
-          </View>
-          <View style={styles.box}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Relaxing')}>
             <Icon
               name="ios-basketball"
               size={90}
@@ -74,7 +82,7 @@ class Home extends React.Component {
               style={styles.userIcon}
             />
             <Text>Relaxing</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.lastBox}>
             <View style={styles.subBox}>
               <Icon
@@ -101,10 +109,17 @@ class Home extends React.Component {
 
 Home.propTypes = {
   auth: PropTypes.string.isRequired,
+  navigation: PropTypes.instanceOf(Object).isRequired,
+  setCategory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  category: state.category,
 });
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = dispatch => ({
+  setCategory: category => dispatch(setCategory(category)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

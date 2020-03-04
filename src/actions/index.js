@@ -1,5 +1,6 @@
 const SIGNIN = 'SIGNIN';
 const SIGNUP = 'SIGNUP';
+const CATEGORY = 'CATEGORY';
 
 const signin = username => ({
   type: SIGNIN,
@@ -11,4 +12,9 @@ const signup = username => ({
   username,
 });
 
-export { signin, signup };
+const setCategory = category => ({
+  type: CATEGORY,
+  category,
+});
+
+export { signin, signup, setCategory };

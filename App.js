@@ -8,9 +8,11 @@ import rootReducer from './src/reducers/index';
 import SigninForm from './src/containers/signinForm';
 import SignupForm from './src/containers/signupForm';
 import Home from './src/containers/home';
+import Category from './src/containers/category';
 
 const user = {
   auth: '',
+  category: '',
 };
 
 const store = createStore(rootReducer, user);
@@ -35,6 +37,11 @@ export default function App() {
             name="Home"
             component={Home}
             options={{ title: 'Home' }}
+          />
+          <Stack.Screen
+            name="Category"
+            component={Category}
+            options={{ title: 'Category' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

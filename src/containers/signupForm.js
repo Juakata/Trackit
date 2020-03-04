@@ -15,7 +15,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: [],
+      error: '',
     };
   }
 
@@ -35,14 +35,12 @@ class SignupForm extends React.Component {
                   actions.resetForm();
                   signup(username);
                   navigation.navigate('Home', { name: 'Home' });
+                } else if (typeof data.username !== 'undefined') {
+                  this.setState({ error: `Username ${data.username}` });
+                } else if (typeof data.password !== 'undefined') {
+                  this.setState({ error: data.password[0] });
                 } else {
-                  if (typeof data.username !== 'undefined') {
-                    this.setState({ error: data.username });
-                  } if (typeof data.password !== 'undefined') {
-                    this.setState({ error: data.password });
-                  } else {
-                    this.setState({ error: data.result });
-                  }
+                  this.setState({ error: data.result });
                 }
               })
               .catch(() => {
