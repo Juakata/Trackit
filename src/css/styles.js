@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     width: WIDTH - 55,
     height: 45,
     borderRadius: 25,
-    backgroundColor: '#432577',
+    backgroundColor: '#575757',
     justifyContent: 'center',
     marginTop: 20,
   },
@@ -100,6 +100,13 @@ const styles = StyleSheet.create({
   },
   lastIcon: {
     color: 'rgba(255, 255, 255, 0.7)',
+  },
+  header: {
+    backgroundColor: '#4dc1ff',
+  },
+  headerTitle: {
+    color: '#fff',
+    left: WIDTH / 2 - 100,
   },
 });
 

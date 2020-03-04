@@ -9,6 +9,7 @@ import SigninForm from './src/containers/signinForm';
 import SignupForm from './src/containers/signupForm';
 import Home from './src/containers/home';
 import Category from './src/containers/category';
+import styles from './src/css/styles';
 
 const user = {
   auth: '',
@@ -26,22 +27,22 @@ export default function App() {
           <Stack.Screen
             name="Signin"
             component={SigninForm}
-            options={{ title: 'Sign In!' }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Signup"
             component={SignupForm}
-            options={{ title: 'Sign Up!' }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{ title: 'Home' }}
+            options={{ title: 'Home', headerStyle: styles.header, headerTitleStyle: styles.headerTitle }}
           />
           <Stack.Screen
             name="Category"
             component={Category}
-            options={{ title: 'Category' }}
+            options={({ route }) => ({ title: route.params.name })}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -19,8 +19,8 @@ class Category extends React.Component {
     const { category } = this.props;
     return (
       <View>
-        <Text>{time}</Text>
         <Text styles={styles.catTitle}>{category}</Text>
+        <Text>{time}</Text>
       </View>
     );
   }

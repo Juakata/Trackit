@@ -20,7 +20,7 @@ class Home extends React.Component {
   handleCategory(category) {
     const { navigation, setCategory } = this.props;
     setCategory(category);
-    navigation.navigate('Category', { name: 'Category' });
+    navigation.navigate('Category', { name: category });
   }
 
   render() {
