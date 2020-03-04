@@ -20,14 +20,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  logoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   logo: {
-    color: '#fff',
-    backgroundColor: '#000',
-    borderRadius: 100,
-    padding: 40,
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 50,
+    width: WIDTH - 200,
+    height: WIDTH - 200,
   },
   icon: {
     position: 'absolute',

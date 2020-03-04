@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  TextInput, View, Text, ImageBackground, TouchableOpacity,
+  TextInput, View, Text, ImageBackground, TouchableOpacity, Image,
 } from 'react-native';
 import { Formik } from 'formik';
 import styles from '../css/styles';
 import { signup } from '../actions/index';
 import bgImage from '../../assets/background.jpg';
+import logo from '../../assets/logo.png';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -51,7 +52,9 @@ class SignupForm extends React.Component {
         >
           { props => (
             <View>
-              <Text style={styles.logo}>Track.it</Text>
+              <View style={styles.logoContainer}>
+                <Image source={logo} style={styles.logo} />
+              </View>
               <View>
                 <Icon
                   name="ios-person"
