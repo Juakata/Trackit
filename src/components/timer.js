@@ -9,8 +9,7 @@ const Timer = ({ interval }) => {
   const h = duration.hours() < 10 ? `0${duration.hours()}` : duration.hours();
   const m = duration.minutes() < 10 ? `0${duration.minutes()}` : duration.minutes();
   const s = duration.seconds() < 10 ? `0${duration.seconds()}` : duration.seconds();
-  let ms = Math.round(duration.milliseconds() / 10);
-  ms = ms < 10 ? `0${ms}` : ms;
+
   return (
     <View style={styles.timeContainer}>
       <Text style={styles.time}>{h}</Text>
@@ -18,8 +17,6 @@ const Timer = ({ interval }) => {
       <Text style={styles.time}>{m}</Text>
       <Text style={styles.timeColon}>:</Text>
       <Text style={styles.time}>{s}</Text>
-      <Text style={styles.timeColon}>:</Text>
-      <Text style={styles.time}>{ms}</Text>
     </View>
   );
 };

@@ -13,43 +13,76 @@ class Category extends React.Component {
     super(props);
     this.state = {
       start: 0,
-      now: 0,
+      interval: 0,
+      save: 0,
+      pause: true,
     };
     this.startTime = this.startTime.bind(this);
+    this.pauseTime = this.pauseTime.bind(this);
   }
 
   startTime() {
     const now = new Date().getTime();
     this.setState({
       start: now,
-      now,
+      pause: false,
     });
-    setInterval(() => {
+    this.timer = setInterval(() => {
       const now = new Date().getTime();
-      this.setState({
-        now,
-      });
+      this.setState(state => ({
+        interval: state.save + (now - state.start),
+      }));
     }, 100);
+  }
+
+  pauseTime() {
+    clearInterval(this.timer);
+    this.setState(state => ({
+      start: 0,
+      save: state.interval,
+      pause: true,
+    }));
+  }
+
+  saveTime() {
+    const { interval } = this.state;
+    const { category } = this.props;
+    console.log(interval);
+    console.log(category);
   }
 
   render() {
     const {
       start,
-      now,
+      interval,
+      pause,
     } = this.state;
-    const { category } = this.props;
     return (
       <View style={styles.container}>
-        <Text styles={styles.catTitle}>{category}</Text>
-        <Timer interval={now - start} />
+        <Timer interval={interval} />
         <View style={styles.raundButtonsCont}>
+          {start === 0 && { pause } && (
+            <RoundButton
+              title="Start"
+              color="#00e052"
+              backgroundColor="#00732a"
+              onClick={() => this.startTime()}
+            />
+          )}
+          {start > 0 && (
+            <RoundButton
+              title="Pause"
+              color="#ff5647"
+              backgroundColor="#a10d00"
+              onClick={() => this.pauseTime()}
+            />
+          )}
           <RoundButton
-            title="Start"
-            color="#00e052"
-            backgroundColor="#00732a"
-            onClick={() => this.startTime()}
+            title="Save"
+            color="#0f9fff"
+            backgroundColor="#005a96"
+            onClick={() => this.saveTime()}
           />
-          <RoundButton title="Save" color="#0f9fff" backgroundColor="#005a96" />
         </View>
       </View>
     );
