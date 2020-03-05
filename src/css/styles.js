@@ -106,7 +106,48 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: '#fff',
-    left: WIDTH / 2 - 100,
+  },
+  timeContainer: {
+    width: '80%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  time: {
+    fontSize: 30,
+    padding: 10,
+    margin: 3,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#006fb0',
+    fontWeight: 'bold',
+  },
+  timeColon: {
+    fontSize: 25,
+    padding: 0,
+    marginTop: 13,
+  },
+  roundButton: {
+    width: 100,
+    height: 100,
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  roundButtonContainer: {
+    width: 105,
+    height: 105,
+    borderWidth: 2,
+    borderRadius: 62,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  raundButtonsCont: {
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
+    marginTop: 40,
+    marginHorizontal: 50,
   },
 });
 

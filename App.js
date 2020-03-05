@@ -37,12 +37,22 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{ title: 'Home', headerStyle: styles.header, headerTitleStyle: styles.headerTitle }}
+            options={{
+              title: 'Home',
+              headerStyle: styles.header,
+              headerTitleStyle: styles.headerTitle,
+              headerTitleAlign: 'center',
+            }}
           />
           <Stack.Screen
             name="Category"
             component={Category}
-            options={({ route }) => ({ title: route.params.name })}
+            options={({ route }) => ({
+              title: route.params.name,
+              headerStyle: styles.header,
+              headerTitleStyle: styles.headerTitle,
+              headerTitleAlign: 'center',
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>

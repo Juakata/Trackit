@@ -5,22 +5,52 @@ import {
   View, Text,
 } from 'react-native';
 import styles from '../css/styles';
+import Timer from '../components/timer';
+import RoundButton from '../components/roundButton';
 
 class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 0,
+      start: 0,
+      now: 0,
     };
+    this.startTime = this.startTime.bind(this);
+  }
+
+  startTime() {
+    const now = new Date().getTime();
+    this.setState({
+      start: now,
+      now,
+    });
+    setInterval(() => {
+      const now = new Date().getTime();
+      this.setState({
+        now,
+      });
+    }, 100);
   }
 
   render() {
-    const { time } = this.state;
+    const {
+      start,
+      now,
+    } = this.state;
     const { category } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Text styles={styles.catTitle}>{category}</Text>
-        <Text>{time}</Text>
+        <Timer interval={now - start} />
+        <View style={styles.raundButtonsCont}>
+          <RoundButton
+            title="Start"
+            color="#00e052"
+            backgroundColor="#00732a"
+            onClick={() => this.startTime()}
+          />
+          <RoundButton title="Save" color="#0f9fff" backgroundColor="#005a96" />
+        </View>
       </View>
     );
   }
