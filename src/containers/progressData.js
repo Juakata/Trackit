@@ -1,76 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  View, Text,
+  View,
 } from 'react-native';
-import styles from '../css/styles';
+import Progress from '../components/progress';
 
 class ProgressData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nN: 0,
-      nL: 0,
-      nC: 0,
-      nR: 0,
+      categories: [],
     };
   }
 
   checkProgress = () => {
-    
+    const { auth } = this.props;
+    const getDate = new Date();
+    const date = `${getDate.getFullYear()}-${getDate.getMonth()}-${getDate.getDate()}`;
+    fetch(`https://still-retreat-45947.herokuapp.com/api/v1/getprogress/${auth}/${date}`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          categories: data,
+        });
+      })
+      .catch(() => {
+      });
   }
 
   render() {
     const {
-      nN,
-      nL,
-      nC,
-      nR,
+      categories,
     } = this.state;
+    this.checkProgress();
+    const renderCat = categories.map(element => (
+      <Progress key={element.id} name={element.name} progress={element.progress} />
+    ));
     return (
       <View>
-        <Text style={styles.titleDataC}>Networking</Text>
-        <View>
-          <Icon
-            name="ios-time"
-            size={20}
-            color="rgba(255, 255, 255, 0.7)"
-            style={styles.userIcon}
-          />
-          <Text>{nN}</Text>
-        </View>
-        <Text style={styles.titleDataC}>Looking for job</Text>
-        <View>
-          <Icon
-            name="ios-time"
-            size={20}
-            color="rgba(255, 255, 255, 0.7)"
-            style={styles.userIcon}
-          />
-          <Text>{nL}</Text>
-        </View>
-        <Text style={styles.titleDataC}>Coding Challenges</Text>
-        <View>
-          <Icon
-            name="ios-time"
-            size={20}
-            color="rgba(255, 255, 255, 0.7)"
-            style={styles.userIcon}
-          />
-          <Text>{nC}</Text>
-        </View>
-        <Text style={styles.titleDataC}>Relaxing</Text>
-        <View>
-          <Icon
-            name="ios-time"
-            size={20}
-            color="rgba(255, 255, 255, 0.7)"
-            style={styles.userIcon}
-          />
-          <Text>{nR}</Text>
-        </View>
+        {renderCat}
       </View>
     );
   }

@@ -157,6 +157,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     backgroundColor: '#008271',
   },
+  timeProCont: {
+    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-end',
+    marginLeft: 10,
+    marginBottom: 30,
+  },
+  timePro: {
+    fontSize: 20,
+    marginLeft: 5,
+    fontWeight: 'bold',
+  },
+  timeProSymbol: {
+    fontSize: 17,
+    color: '#255369',
+  },
 });
 
 export default styles;
