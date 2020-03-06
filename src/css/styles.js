@@ -150,6 +150,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginHorizontal: 50,
   },
+  titleDataC: {
+    width: WIDTH,
+    padding: 10,
+    color: '#fff',
+    fontSize: 20,
+    backgroundColor: '#008271',
+  },
 });
 
 export default styles;
