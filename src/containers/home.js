@@ -24,7 +24,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { auth } = this.props;
+    const { navigation, auth } = this.props;
     const { progress } = this.state;
     return (
       <ScrollView style={styles.scrollContainer}>
@@ -92,14 +92,17 @@ class Home extends React.Component {
                 style={styles.lastIcon}
               />
             </View>
-            <View style={styles.subBox}>
+            <TouchableOpacity
+              style={styles.subBox}
+              onPress={() => navigation.navigate('ProgressData', { name: 'ProgressData' })}
+            >
               <Icon
                 name="ios-trending-up"
                 size={90}
                 color="rgba(255, 255, 255, 0.7)"
                 style={styles.lastIcon}
               />
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
