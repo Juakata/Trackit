@@ -65,7 +65,7 @@ class Home extends React.Component {
             />
             <Text>Looking for job</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Conding Challenges')}>
+          <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Coding Challenges')}>
             <Icon
               name="ios-desktop"
               size={90}
