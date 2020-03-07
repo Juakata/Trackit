@@ -11,9 +11,6 @@ import { setCategory } from '../actions/index';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      progress: 0,
-    };
     this.handleCategory = this.handleCategory.bind(this);
   }
 
@@ -25,7 +22,6 @@ class Home extends React.Component {
 
   render() {
     const { navigation, auth } = this.props;
-    const { progress } = this.state;
     return (
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.homeContainer}>
@@ -38,15 +34,18 @@ class Home extends React.Component {
             />
             <Text>{ auth }</Text>
           </View>
-          <View style={styles.box}>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => navigation.navigate('Goals', { name: 'Goals' })}
+          >
             <Icon
-              name="ios-time"
+              name="ios-list"
               size={90}
               color="rgba(255, 255, 255, 0.7)"
               style={styles.userIcon}
             />
-            <Text>{ progress }</Text>
-          </View>
+            <Text>Set your goals</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => this.handleCategory('Networking')}>
             <Icon
               name="ios-people"
@@ -84,14 +83,6 @@ class Home extends React.Component {
             <Text>Relaxing</Text>
           </TouchableOpacity>
           <View style={styles.lastBox}>
-            <View style={styles.subBox}>
-              <Icon
-                name="ios-fitness"
-                size={90}
-                color="rgba(255, 255, 255, 0.7)"
-                style={styles.lastIcon}
-              />
-            </View>
             <TouchableOpacity
               style={styles.subBox}
               onPress={() => navigation.navigate('ProgressData', { name: 'ProgressData' })}

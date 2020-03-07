@@ -10,6 +10,7 @@ import SignupForm from './src/containers/signupForm';
 import Home from './src/containers/home';
 import Category from './src/containers/category';
 import ProgressData from './src/containers/progressData';
+import Goals from './src/containers/goals';
 import styles from './src/css/styles';
 
 const user = {
@@ -60,6 +61,16 @@ export default function App() {
             component={ProgressData}
             options={{
               title: 'Progress Data',
+              headerStyle: styles.header,
+              headerTitleStyle: styles.headerTitle,
+              headerTitleAlign: 'center',
+            }}
+          />
+          <Stack.Screen
+            name="Goals"
+            component={Goals}
+            options={{
+              title: 'Goals',
               headerStyle: styles.header,
               headerTitleStyle: styles.headerTitle,
               headerTitleAlign: 'center',

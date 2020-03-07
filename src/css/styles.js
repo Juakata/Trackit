@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   subBox: {
     margin: 0,
-    width: '50%',
+    width: '100%',
     borderColor: '#000',
     borderWidth: 0.5,
     height: HEIGHT / 4 - 30,
@@ -173,6 +173,15 @@ const styles = StyleSheet.create({
   timeProSymbol: {
     fontSize: 17,
     color: '#255369',
+  },
+  inputTime: {
+    width: '15%',
+    height: 30,
+    paddingLeft: 15,
+    borderRadius: 45,
+    fontSize: 16,
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    color: 'rgba(255, 255, 255, 0.7)',
   },
 });
 
