@@ -33,10 +33,24 @@ class ProgressData extends React.Component {
     const {
       categories,
     } = this.state;
+    const { goals } = this.props;
     this.checkProgress();
-    const renderCat = categories.map(element => (
-      <Progress key={element.id} name={element.name} progress={element.progress} />
-    ));
+    const renderCat = categories.map(element => {
+      let goal = 0;
+      goals.forEach(e => {
+        if (e.name === element.name) {
+          goal = e.goal;
+        }
+      });
+      return (
+        <Progress
+          key={element.id}
+          name={element.name}
+          progress={element.progress}
+          goal={goal}
+        />
+      );
+    });
     return (
       <View>
         {renderCat}
@@ -47,10 +61,12 @@ class ProgressData extends React.Component {
 
 ProgressData.propTypes = {
   auth: PropTypes.string.isRequired,
+  goals: PropTypes.instanceOf(Object).isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  goals: state.goals,
 });
 
 export default connect(mapStateToProps, null)(ProgressData);

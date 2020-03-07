@@ -183,6 +183,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.35)',
     color: 'rgba(255, 255, 255, 0.7)',
   },
+  percent: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#4b0091',
+    marginLeft: 20,
+  },
 });
 
 export default styles;

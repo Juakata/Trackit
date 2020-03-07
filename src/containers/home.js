@@ -6,12 +6,27 @@ import {
   View, ScrollView, Text, TouchableOpacity,
 } from 'react-native';
 import styles from '../css/styles';
-import { setCategory } from '../actions/index';
+import { setCategory, addGoal } from '../actions/index';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleCategory = this.handleCategory.bind(this);
+    this.getGoals();
+  }
+
+  getGoals = () => {
+    const { auth, addGoal } = this.props;
+    fetch(`https://still-retreat-45947.herokuapp.com/api/v1/getcategories/${auth}`)
+      .then(response => response.json())
+      .then(data => {
+        addGoal({ name: 'Networking', goal: data[0].goal_time });
+        addGoal({ name: 'Looking for job', goal: data[1].goal_time });
+        addGoal({ name: 'Coding Challenges', goal: data[2].goal_time });
+        addGoal({ name: 'Relaxing', goal: data[3].goal_time });
+      })
+      .catch(() => {
+      });
   }
 
   handleCategory(category) {
@@ -105,15 +120,18 @@ Home.propTypes = {
   auth: PropTypes.string.isRequired,
   navigation: PropTypes.instanceOf(Object).isRequired,
   setCategory: PropTypes.func.isRequired,
+  addGoal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
   category: state.category,
+  goals: state.goals,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCategory: category => dispatch(setCategory(category)),
+  addGoal: goal => dispatch(addGoal(goal)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

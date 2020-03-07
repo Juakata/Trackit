@@ -8,6 +8,7 @@ import {
   View, TouchableOpacity, Text, TextInput, Alert,
 } from 'react-native';
 import styles from '../css/styles';
+import { updateGoals } from '../actions/index';
 
 class Goals extends React.Component {
   constructor(props) {
@@ -89,11 +90,17 @@ class Goals extends React.Component {
             codM = (codM === '') ? 0 : codM;
             relH = (relH === '') ? 0 : relH;
             relM = (relM === '') ? 0 : relM;
-            const { auth } = this.props;
+            const { auth, updateGoals } = this.props;
+            const goals = [];
             const net = moment.duration(`${netH}:${netM}:00.000`).asMilliseconds();
             const look = moment.duration(`${lookH}:${lookM}:00.000`).asMilliseconds();
             const cod = moment.duration(`${codH}:${codM}:00.000`).asMilliseconds();
             const rel = moment.duration(`${relH}:${relM}:00.000`).asMilliseconds();
+            goals.push({ name: 'Networking', goal: net });
+            goals.push({ name: 'Looking for job', goal: look });
+            goals.push({ name: 'Coding Challenges', goal: cod });
+            goals.push({ name: 'Relaxing', goal: rel });
+            updateGoals(goals);
             fetch(`https://still-retreat-45947.herokuapp.com/api/v1/updategoals/${auth}/${net}/${look}/${cod}/${rel}`)
               .then(response => response.json())
               .then(data => {
@@ -215,10 +222,15 @@ class Goals extends React.Component {
 
 Goals.propTypes = {
   auth: PropTypes.string.isRequired,
+  updateGoals: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, null)(Goals);
+const mapDispatchToProps = dispatch => ({
+  updateGoals: goals => dispatch(updateGoals(goals)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goals);

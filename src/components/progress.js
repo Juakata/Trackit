@@ -5,12 +5,12 @@ import { Text, View } from 'react-native';
 import moment from 'moment';
 import styles from '../css/styles';
 
-const Progress = ({ name, progress }) => {
+const Progress = ({ name, progress, goal }) => {
   const duration = moment.duration(progress);
   const h = duration.hours() < 10 ? `0${duration.hours()}` : duration.hours();
   const m = duration.minutes() < 10 ? `0${duration.minutes()}` : duration.minutes();
   const s = duration.seconds() < 10 ? `0${duration.seconds()}` : duration.seconds();
-
+  const percent = parseFloat((progress * 100) / goal).toFixed(2);
   return (
     <View>
       <Text style={styles.titleDataC}>{ name }</Text>
@@ -27,6 +27,7 @@ const Progress = ({ name, progress }) => {
         <Text style={styles.timeProSymbol}>mm : </Text>
         <Text style={styles.timePro}>{s}</Text>
         <Text style={styles.timeProSymbol}>ss</Text>
+        <Text style={styles.percent}>{`%${percent}`}</Text>
       </View>
     </View>
   );
@@ -35,6 +36,7 @@ const Progress = ({ name, progress }) => {
 Progress.propTypes = {
   name: PropTypes.string.isRequired,
   progress: PropTypes.number.isRequired,
+  goal: PropTypes.number.isRequired,
 };
 
 export default Progress;

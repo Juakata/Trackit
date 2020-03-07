@@ -16,6 +16,7 @@ import styles from './src/css/styles';
 const user = {
   auth: '',
   category: '',
+  goals: [],
 };
 
 const store = createStore(rootReducer, user);

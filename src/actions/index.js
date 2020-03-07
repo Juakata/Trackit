@@ -1,6 +1,8 @@
 const SIGNIN = 'SIGNIN';
 const SIGNUP = 'SIGNUP';
 const CATEGORY = 'CATEGORY';
+const ADDGOAL = 'ADDGOAL';
+const UPDATEGOALS = 'UPDATEGOALS';
 
 const signin = username => ({
   type: SIGNIN,
@@ -17,4 +19,16 @@ const setCategory = category => ({
   category,
 });
 
-export { signin, signup, setCategory };
+const addGoal = goal => ({
+  type: ADDGOAL,
+  goal,
+});
+
+const updateGoals = goals => ({
+  type: UPDATEGOALS,
+  goals,
+});
+
+export {
+  signin, signup, setCategory, addGoal, updateGoals,
+};
