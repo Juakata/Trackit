@@ -189,6 +189,21 @@ const styles = StyleSheet.create({
     color: '#4b0091',
     marginLeft: 20,
   },
+  infoContainer: {
+    flex: 1,
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  welcomeText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  featuresCont: {
+    textAlign: 'left',
+    marginHorizontal: 10,
+  },
 });
 
 export default styles;

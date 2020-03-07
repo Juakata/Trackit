@@ -40,7 +40,10 @@ class Home extends React.Component {
     return (
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.homeContainer}>
-          <View style={styles.box}>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => navigation.navigate('Info', { name: 'Info' })}
+          >
             <Icon
               name="ios-person"
               size={90}
@@ -48,7 +51,7 @@ class Home extends React.Component {
               style={styles.userIcon}
             />
             <Text>{ auth }</Text>
-          </View>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.box}
             onPress={() => navigation.navigate('Goals', { name: 'Goals' })}

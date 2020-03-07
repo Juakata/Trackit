@@ -11,6 +11,7 @@ import Home from './src/containers/home';
 import Category from './src/containers/category';
 import ProgressData from './src/containers/progressData';
 import Goals from './src/containers/goals';
+import Info from './src/containers/info';
 import styles from './src/css/styles';
 
 const user = {
@@ -72,6 +73,16 @@ export default function App() {
             component={Goals}
             options={{
               title: 'Goals',
+              headerStyle: styles.header,
+              headerTitleStyle: styles.headerTitle,
+              headerTitleAlign: 'center',
+            }}
+          />
+          <Stack.Screen
+            name="Info"
+            component={Info}
+            options={{
+              title: 'Info',
               headerStyle: styles.header,
               headerTitleStyle: styles.headerTitle,
               headerTitleAlign: 'center',
