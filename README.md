@@ -1,6 +1,6 @@
 # Trackit-App
 
-> This project is an app to track the progress of some activities like working on challenges, looking for job, working on your network or if you are just taking a break you can get track of it.
+> This project is the front-end of an mobile-app to track the progress of some activities like working on challenges, looking for job, working on your network or if you are just taking a break you can get track of it.
 
 ## Built With
 - Expo,
