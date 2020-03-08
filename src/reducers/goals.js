@@ -13,13 +13,12 @@ const goalsReducer = (state = [], action) => {
       if (add) {
         return [...state, action.goal];
       }
-      break;
+      return state;
     case UPDATEGOALS:
       return action.goals;
     default:
       return state;
   }
-  return null;
 };
 
 export default goalsReducer;

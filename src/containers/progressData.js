@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  View,
+  View, Text,
 } from 'react-native';
 import Progress from '../components/progress';
+import styles from '../css/styles';
 
 class ProgressData extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class ProgressData extends React.Component {
     const {
       categories,
     } = this.state;
+    const nodata = 'No data saved, go to any category to save progress.';
     const { goals } = this.props;
     this.checkProgress();
     const renderCat = categories.map(element => {
@@ -53,7 +55,7 @@ class ProgressData extends React.Component {
     });
     return (
       <View>
-        {renderCat}
+        {renderCat.length === 0 ? <Text style={styles.nodata}>{nodata}</Text> : renderCat}
       </View>
     );
   }

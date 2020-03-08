@@ -29,16 +29,6 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="Signin"
-            component={SigninForm}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Signup"
-            component={SignupForm}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
             name="Home"
             component={Home}
             options={{
@@ -47,6 +37,16 @@ export default function App() {
               headerTitleStyle: styles.headerTitle,
               headerTitleAlign: 'center',
             }}
+          />
+          <Stack.Screen
+            name="Signin"
+            component={SigninForm}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={SignupForm}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Category"

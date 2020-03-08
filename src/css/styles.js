@@ -209,6 +209,10 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginHorizontal: 10,
   },
+  nodata: {
+    fontSize: 25,
+    marginHorizontal: 10,
+  },
 });
 
 export default styles;

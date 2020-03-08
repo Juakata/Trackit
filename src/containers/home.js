@@ -12,11 +12,12 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleCategory = this.handleCategory.bind(this);
-    this.getGoals();
   }
 
-  getGoals = () => {
-    const { auth, addGoal } = this.props;
+  getGoals = (auth, addGoal, navigation) => {
+    if (auth === '') {
+      navigation.navigate('Signin', { name: 'Signin' });
+    }
     fetch(`https://still-retreat-45947.herokuapp.com/api/v1/getcategories/${auth}`)
       .then(response => response.json())
       .then(data => {
@@ -36,7 +37,8 @@ class Home extends React.Component {
   }
 
   render() {
-    const { navigation, auth } = this.props;
+    const { auth, addGoal, navigation } = this.props;
+    this.getGoals(auth, addGoal, navigation);
     return (
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.homeContainer}>

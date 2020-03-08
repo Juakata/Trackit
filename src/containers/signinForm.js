@@ -34,7 +34,7 @@ class SigninForm extends React.Component {
                 if (typeof data.result === 'undefined') {
                   actions.resetForm();
                   signin(username);
-                  navigation.navigate('Home', { name: 'Home' });
+                  navigation.pop();
                 } else {
                   switch (data.result) {
                     case 'not_found':

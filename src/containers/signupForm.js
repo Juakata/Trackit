@@ -34,7 +34,7 @@ class SignupForm extends React.Component {
                 if (typeof data.id !== 'undefined') {
                   actions.resetForm();
                   signup(username);
-                  navigation.navigate('Home', { name: 'Home' });
+                  navigation.pop(2);
                 } else if (typeof data.username !== 'undefined') {
                   this.setState({ error: `Username ${data.username}` });
                 } else if (typeof data.password !== 'undefined') {
