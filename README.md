@@ -1,6 +1,6 @@
 # Trackit-App
 
-> This project is an app to track the progress of your activities.
+> This project is an app to track the progress of some activities like working on challenges, looking for job, working on your network or if you are just taking a break you can get track of it.
 
 ## Built With
 - Expo,
@@ -8,8 +8,23 @@
 - Redux
 
 ## Live Demo
+> This Live Demo works on a computer but to see the app working correctly, the link needs to be opened on a phone.  
 
-[Live Demo Link]()
+[Live Demo Link](https://trackit-kr5a7oq3h.now.sh/)
+
+> Another option is to install expo on your device you can download the app from the Play store then go to:
+
+[Click here](https://expo.io/@juakata/Trackit) and scan the QR code.
+
+> The Back-End was built with Rails.
+
+[Link to the Back-End Repo](https://github.com/Juakata/Trackit-BackEnd)
+
+## To Run the project locally
+
+- Clone the repo project https://github.com/Juakata/Trackit.git,
+- npm install,
+- expo start
 
 ## Authors
 
