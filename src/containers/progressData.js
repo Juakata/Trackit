@@ -38,12 +38,13 @@ class ProgressData extends React.Component {
     const { goals } = this.props;
     this.checkProgress();
     const renderCat = categories.map(element => {
-      let goal = 0;
+      let finalGoal = 0;
       goals.forEach(e => {
         const { namecat } = element;
         const { namee } = e;
         if (namee === namecat) {
-          goal = e.goal;
+          const { goal } = e;
+          finalGoal = goal;
         }
       });
       return (
@@ -51,7 +52,7 @@ class ProgressData extends React.Component {
           key={element.id}
           name={element.name}
           progress={element.progress}
-          goal={goal}
+          goal={finalGoal}
         />
       );
     });
