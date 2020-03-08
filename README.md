@@ -7,12 +7,13 @@
 - React Native,
 - Redux
 
-## Live Demo
-> This Live Demo works on a computer but to see the app working correctly, the link needs to be opened on a phone.  
+## Live Demo option-1
+> This Live Demo works on any device but this is a mobile-app, therefore you should go to option-2.  
 
 [Live Demo Link](https://trackit-kr5a7oq3h.now.sh/)
 
-> Another option is to install expo on your device you can download the app from the Play store then go to:
+## Live Demo option-2
+> Install expo on your device. You can download the app from the Play store then go to:
 
 [Click here](https://expo.io/@juakata/Trackit) and scan the QR code.
 
