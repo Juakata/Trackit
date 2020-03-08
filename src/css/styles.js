@@ -180,8 +180,13 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderRadius: 45,
     fontSize: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.35)',
-    color: 'rgba(255, 255, 255, 0.7)',
+    backgroundColor: 'rgba(26, 177, 219, 1)',
+    color: '#fff',
+  },
+  btnSetGoals: {
+    backgroundColor: 'rgba(26, 177, 219, 0.5)',
+    padding: 10,
+    borderRadius: 10,
   },
   percent: {
     fontSize: 20,

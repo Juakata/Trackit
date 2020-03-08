@@ -208,7 +208,7 @@ class Goals extends React.Component {
                 <Text style={styles.timeProSymbol}>m</Text>
               </View>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.btnSession} onPress={props.handleSubmit}>
+                <TouchableOpacity style={styles.btnSetGoals} onPress={props.handleSubmit}>
                   <Text style={styles.text}>Save Goals</Text>
                 </TouchableOpacity>
               </View>
