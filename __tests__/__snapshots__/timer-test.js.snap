@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoundButton snapShot 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+      "width": "80%",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "borderColor": "#006fb0",
+        "borderRadius": 10,
+        "borderWidth": 2,
+        "fontSize": 35,
+        "fontWeight": "bold",
+        "margin": 3,
+        "padding": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    00
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 30,
+        "marginTop": 13,
+        "padding": 0,
+      }
+    }
+  >
+    :
+  </Text>
+  <Text
+    style={
+      Object {
+        "borderColor": "#006fb0",
+        "borderRadius": 10,
+        "borderWidth": 2,
+        "fontSize": 35,
+        "fontWeight": "bold",
+        "margin": 3,
+        "padding": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    00
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 30,
+        "marginTop": 13,
+        "padding": 0,
+      }
+    }
+  >
+    :
+  </Text>
+  <Text
+    style={
+      Object {
+        "borderColor": "#006fb0",
+        "borderRadius": 10,
+        "borderWidth": 2,
+        "fontSize": 35,
+        "fontWeight": "bold",
+        "margin": 3,
+        "padding": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    00
+  </Text>
+</View>
+`;

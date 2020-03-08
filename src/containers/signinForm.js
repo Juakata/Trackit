@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import { connect } from 'react-redux';
 import {
   TextInput, View, Text, ImageBackground, TouchableOpacity, Image,
@@ -19,6 +19,31 @@ class SigninForm extends React.Component {
     };
   }
 
+  makeRequest(username, password, actions, signin, navigation) {
+    fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
+      .then(response => response.json())
+      .then(data => {
+        if (typeof data.result === 'undefined') {
+          actions.resetForm();
+          signin(username);
+          navigation.pop();
+        } else {
+          switch (data.result) {
+            case 'not_found':
+              this.setState({ error: 'Incorrect User' });
+              break;
+            case 'wrong_password':
+              this.setState({ error: 'Incorrect Password' });
+              break;
+            default:
+          }
+        }
+      })
+      .catch(() => {
+        this.setState({ error: 'Wrong Data' });
+      });
+  }
+
   render() {
     const { error } = this.state;
     const { navigation, signin } = this.props;
@@ -28,28 +53,7 @@ class SigninForm extends React.Component {
           initialValues={{ username: '', password: '' }}
           onSubmit={(values, actions) => {
             const { username, password } = values;
-            fetch(`https://still-retreat-45947.herokuapp.com/api/v1/login/${username}/${password}`)
-              .then(response => response.json())
-              .then(data => {
-                if (typeof data.result === 'undefined') {
-                  actions.resetForm();
-                  signin(username);
-                  navigation.pop();
-                } else {
-                  switch (data.result) {
-                    case 'not_found':
-                      this.setState({ error: 'Incorrect User' });
-                      break;
-                    case 'wrong_password':
-                      this.setState({ error: 'Incorrect Password' });
-                      break;
-                    default:
-                  }
-                }
-              })
-              .catch(() => {
-                this.setState({ error: 'Wrong Data' });
-              });
+            this.makeRequest(username, password, actions, signin, navigation);
           }}
         >
           { props => (
@@ -58,12 +62,6 @@ class SigninForm extends React.Component {
                 <Image source={logo} style={styles.logo} />
               </View>
               <View>
-                <Icon
-                  name="ios-person"
-                  size={28}
-                  color="rgba(255, 255, 255, 0.7)"
-                  style={styles.icon}
-                />
                 <TextInput
                   style={styles.input}
                   placeholder="Username"
@@ -72,12 +70,6 @@ class SigninForm extends React.Component {
                 />
               </View>
               <View>
-                <Icon
-                  name="ios-lock"
-                  size={28}
-                  color="rgba(255, 255, 255, 0.7)"
-                  style={styles.icon}
-                />
                 <TextInput
                   style={styles.input}
                   secureTextEntry
