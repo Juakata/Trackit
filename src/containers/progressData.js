@@ -40,7 +40,9 @@ class ProgressData extends React.Component {
     const renderCat = categories.map(element => {
       let goal = 0;
       goals.forEach(e => {
-        if (e.name === element.name) {
+        const { namecat } = element;
+        const { namee } = e;
+        if (namee === namecat) {
           goal = e.goal;
         }
       });
