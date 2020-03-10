@@ -2,6 +2,8 @@
 
 > This project is an app to track the progress of your activities.
 
+![nativeapp](https://user-images.githubusercontent.com/11781597/76324032-176a6600-62ab-11ea-8e51-aa084159089f.png)
+
 ## Built With
 - Expo,
 - React Native,
