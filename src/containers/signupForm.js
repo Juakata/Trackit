@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import {
-  TextInput, View, Text, ImageBackground, TouchableOpacity,
+  TextInput, View, Text, ImageBackground, TouchableOpacity, Image,
 } from 'react-native';
 import { Formik } from 'formik';
 import styles from '../css/styles';
 import { signup } from '../actions/index';
 import bgImage from '../../assets/background.jpg';
+import logo from '../../assets/logo.png';
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: [],
+      error: '',
     };
   }
 
@@ -33,15 +34,13 @@ class SignupForm extends React.Component {
                 if (typeof data.id !== 'undefined') {
                   actions.resetForm();
                   signup(username);
-                  navigation.navigate('Home', { name: 'Home' });
+                  navigation.pop(2);
+                } else if (typeof data.username !== 'undefined') {
+                  this.setState({ error: `Username ${data.username}` });
+                } else if (typeof data.password !== 'undefined') {
+                  this.setState({ error: data.password[0] });
                 } else {
-                  if (typeof data.username !== 'undefined') {
-                    this.setState({ error: data.username });
-                  } if (typeof data.password !== 'undefined') {
-                    this.setState({ error: data.password });
-                  } else {
-                    this.setState({ error: data.result });
-                  }
+                  this.setState({ error: data.result });
                 }
               })
               .catch(() => {
@@ -51,7 +50,9 @@ class SignupForm extends React.Component {
         >
           { props => (
             <View>
-              <Text style={styles.logo}>Track.it</Text>
+              <View style={styles.logoContainer}>
+                <Image source={logo} style={styles.logo} />
+              </View>
               <View>
                 <Icon
                   name="ios-person"
