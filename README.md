@@ -9,17 +9,10 @@
 - React Native,
 - Redux
 
-## Live Demo option-1
-> This Live Demo works on any device but this is a mobile-app, therefore you should go to option-2.  
+## Live Demo
+> Install expo on your device. You can download the app from the [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es_SV) then go to [Expo page](https://expo.io/@juakata/Trackit) and scan the QR code.
 
-[Live Demo Link](https://trackit-kr5a7oq3h.now.sh/)
-
-## Live Demo option-2
-> Install expo on your device. You can download the app from the Play store then go to:
-
-[Click here](https://expo.io/@juakata/Trackit) and scan the QR code.
-
-> The Back-End was built with Rails.
+## The Back-End was built with Rails.
 
 [Link to the Back-End Repo](https://github.com/Juakata/Trackit-BackEnd)
 
