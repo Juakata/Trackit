@@ -4,8 +4,6 @@
 
 ![nativeapp](https://user-images.githubusercontent.com/11781597/76324032-176a6600-62ab-11ea-8e51-aa084159089f.png)
 
-![nativeapp](https://user-images.githubusercontent.com/11781597/76324032-176a6600-62ab-11ea-8e51-aa084159089f.png)
-
 ## Built With
 - Expo,
 - React Native,
@@ -23,6 +21,12 @@
 - Clone the repo project https://github.com/Juakata/Trackit.git,
 - npm install,
 - expo start
+
+## Future Features
+
+- Save user sesssion.
+- Website version.
+- Panel to add, update or edit new categories to track.
 
 ## Authors
 
