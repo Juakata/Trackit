@@ -1,6 +1,6 @@
 # Trackit-App
 
-> This project is the front-end of an mobile-app to track the progress of some activities like working on challenges, looking for job, working on your network or if you are just taking a break you can get track of it.
+> This project is the front-end of a mobile app designed to track the progress of various activities, such as challenges, job searches, networking, or even just breaks. To track the progress the app has a chronometer that you can start and stop once you are done with the activity and then you can see the daily progress of each activity.
 
 ![nativeapp](https://user-images.githubusercontent.com/11781597/76324032-176a6600-62ab-11ea-8e51-aa084159089f.png)
 
