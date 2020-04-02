@@ -12,7 +12,7 @@
 ## Live Demo
 > Install expo on your device. You can download the app from the [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es_SV) then go to [Expo page](https://expo.io/@juakata/Trackit) and scan the QR code.
 
-[![](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/Fqe1wG0STvA)
+[![Demo CountPages alpha](https://media.giphy.com/media/lpmSNWsBC8r6A68dtt/giphy.gif)](https://www.youtube.com/watch?v=Fqe1wG0STvA)
 
 ## The Back-End was built with Rails.
 
